@@ -1,11 +1,11 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { CardPokemon } from './components/card/cardPokemon';
 
 const App: React.FC = () => {
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <CardPokemon />
     </div>
   );
 }
