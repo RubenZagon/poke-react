@@ -26,10 +26,10 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
 
   }, []);
 
-  let types = pokemonInfo.pokemon.types.map((type) => {
+  let types = pokemonInfo.pokemon.map((res) => {
     return (
-      <div key={type.id}>
-        <h3>{type.name}</h3>
+      <div key={res.types.type.slot}>
+        <h3>{res.type.name}</h3>
       </div>
     )
   })
@@ -38,7 +38,7 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
     <>
       <h1>Soy una carta</h1>
       <h2>Soy el Pokemon {pokemonInfo.pokemon.name}</h2>
-      <p>tipo {types}</p>
+      <p>{types}</p>
 
 
     </>
