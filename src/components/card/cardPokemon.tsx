@@ -2,6 +2,7 @@ import React, { FC, useState, useEffect } from "react";
 import styled from '../../styled';
 import axios from 'axios';
 import { BASE_URL } from "../../services/base";
+import { TypeBlock } from "./typeBlock";
 
 interface cardPokemonProps {
 
@@ -38,21 +39,16 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
 
   }, []);
 
-  // let types = pokemonInfo.pokemon.map((res) => {
-  //   return (
-  //     <div key={res.types.type.slot}>
-  //       <h3>{res.type.name}</h3>
-  //     </div>
-  //   )
-  // })
+  let tipos = pokemonInfo.types!.map(tipos => {
+    return (
+      <TypeBlock type={tipos.type.name} />
+    )
+  })
 
   return (
     <>
-      <h1>Soy una carta</h1>
-      <h2>Soy el Pokemon {pokemonInfo.name}</h2>
-      <p>Tipo - {pokemonInfo.types ? pokemonInfo.types[0].type.name : "no encuentro"}</p>
-
-
+      <h2>{pokemonInfo.name}</h2>
+      <p>Tipo - {tipos && tipos}</p>
     </>
   );
 };
