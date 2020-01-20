@@ -29,8 +29,12 @@ export const StatRow: FC<StatRowProps> = ({ stat }) => {
 
   return (
     <Container>
-      <p>{name} </p>
-      <p>{stat.base_stat}</p>
+      <div className="name">
+        <p>{name}</p>
+      </div>
+      <div className="statNumber">
+        <p>{stat.base_stat}</p>
+      </div>
       <GraphicLine results={stat.base_stat}>
         <span></span>
       </GraphicLine>
@@ -40,11 +44,26 @@ export const StatRow: FC<StatRowProps> = ({ stat }) => {
 
 
 const Container = styled.div`
-margin-top:5px;
-display:flex;
-flex-direction: row;
-justify-content: space-around;
-align-items:center;
+margin-top:2px;
+display:grid;
+grid-template-rows: 40px;
+grid-template-columns: 40% 10% 90vw ;
+/* align-content: flex-start; */
+align-items:center; 
+
+.name{
+  font-weight:bold;
+  color:  lightgray;
+  justify-self:start;
+  padding-left: 20%;
+  /* padding: 0px 20px; */
+}
+
+.statNumber{
+  font-weight:bold;
+  justify-self:start;
+}
+
 `
 
 const GraphicLine = styled.div`
