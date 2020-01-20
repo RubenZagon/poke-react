@@ -6,6 +6,7 @@ import { BASE_URL } from "../../services/base";
 import { TypeBlock } from "./typeBlock";
 import { StatRow } from "./statRow";
 import { capitalize } from "../../tools/capitalize";
+import { ButtonBottom } from "../button/buttonBottom";
 
 interface cardPokemonProps {
 
@@ -46,9 +47,10 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
       stats: [{ stat: { name: "" }, base_stat: 0 }]
     });
 
+  const getNumberRandom = Math.round(Math.random() * 150);
+  const [randomID, setRandomID] = useState<number>(getNumberRandom)
 
   useEffect(() => {
-    let randomID = Math.round(Math.random() * 150)
 
     axios.get(`${BASE_URL}pokemon/${randomID}/`).then((res: ServerResponse) => {
       const pokemon = res.data
@@ -59,7 +61,7 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
         stats: [...pokemon.stats]
       });
     })
-  }, [])
+  }, [randomID])
 
   let statsRender = pokemonInfo.stats!.map(e => {
     return (
@@ -73,6 +75,10 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
     )
   })
 
+  const handleRandomID = () => {
+    setRandomID(getNumberRandom);
+  }
+
   return (
     <>
       {pokemonInfo ? <h2>{pokemonInfo.name}</h2> : <h1>Cargando...</h1>}
@@ -83,6 +89,7 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
       <StatsContainer>
         {statsRender.reverse()}
       </StatsContainer>
+      <ButtonBottom onClick={handleRandomID} />
     </>
   );
 }
