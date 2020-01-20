@@ -28,7 +28,7 @@ justify-content:center;
 align-items:center;
 `
 
-function colorSelector(type: string): string {
+export function colorSelector(type: string): string {
 
   switch (type) {
     case 'normal':

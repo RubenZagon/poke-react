@@ -3,7 +3,7 @@ import React, { FC, useState, useEffect } from "react";
 import styled from '../../styled';
 import axios from 'axios';
 import { BASE_URL } from "../../services/base";
-import { TypeBlock } from "./typeBlock";
+import { TypeBlock, colorSelector } from "./typeBlock";
 import { StatRow } from "./statRow";
 import { capitalize } from "../../tools/capitalize";
 import { ButtonBottom } from "../button/buttonBottom";
@@ -80,7 +80,7 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
   }
 
   return (
-    <>
+    <Container color={pokemonInfo.stats[0].stat.name}>
       {pokemonInfo ? <h2>{pokemonInfo.name}</h2> : <h1>Cargando...</h1>}
       <img src={pokemonInfo.sprites.front_default} alt={pokemonInfo.name} height="200px" />
       <TyposContainer>
@@ -90,9 +90,14 @@ export const CardPokemon: FC<cardPokemonProps> = (props) => {
         {statsRender.reverse()}
       </StatsContainer>
       <ButtonBottom onClick={handleRandomID} />
-    </>
+    </Container>
   );
 }
+
+const Container = styled.div`
+height:100vh;
+background: ${props => colorSelector(props.color!)};
+`
 
 const TyposContainer = styled.div`
             display: flex;
@@ -104,4 +109,6 @@ const StatsContainer = styled.div`
             display:grid;
             background: white;
             border-radius: 20px 20px 0px 0px;
+            padding-top:10%;
+            height: 50vh;
 `

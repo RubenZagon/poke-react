@@ -48,7 +48,6 @@ margin-top:2px;
 display:grid;
 grid-template-rows: 40px;
 grid-template-columns: 40% 10% 90vw ;
-/* align-content: flex-start; */
 align-items:center; 
 
 .name{
@@ -56,7 +55,6 @@ align-items:center;
   color:  lightgray;
   justify-self:start;
   padding-left: 20%;
-  /* padding: 0px 20px; */
 }
 
 .statNumber{
